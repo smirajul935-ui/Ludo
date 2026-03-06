@@ -1,0 +1,49 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: #1a1a2e; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+.screen { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px; padding: 20px; }
+h1 { margin-bottom: 20px; color: #facc15; }
+.card { background: #16213e; padding: 30px; border-radius: 12px; width: 100%; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+.btn { padding: 12px 20px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; margin-top: 10px; font-weight: bold; width: 100%; transition: 0.3s; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn.primary { background: #e94560; color: white; }
+.btn.primary:hover:not(:disabled) { background: #d0304a; }
+.btn.secondary { background: #0f3460; color: white; }
+.btn.secondary:hover:not(:disabled) { background: #0c284a; }
+.divider { margin: 15px 0; font-size: 14px; color: #888; }
+input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; text-align: center; }
+.error { color: #ff4d4d; margin-top: 10px; }
+ul { list-style: none; margin: 15px 0; text-align: left; }
+ul li { padding: 8px; background: rgba(255,255,255,0.1); margin-bottom: 5px; border-radius: 5px; font-weight: bold; text-transform: capitalize; }
+
+/* Game Screen */
+.game-header { display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 20px; background: #16213e; padding: 15px; border-radius: 10px; }
+#dice-container { text-align: center; }
+#dice-value { font-size: 32px; font-weight: bold; background: #fff; color: #000; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; border-radius: 10px; margin: 0 auto 10px; }
+.board-container { position: relative; width: 100%; max-width: 500px; aspect-ratio: 1/1; background: #fff; padding: 5px; border-radius: 5px; }
+
+/* Ludo 15x15 Grid */
+.ludo-board { display: grid; grid-template-columns: repeat(15, 1fr); grid-template-rows: repeat(15, 1fr); width: 100%; height: 100%; border: 1px solid #333; }
+.cell { border: 1px solid #ddd; background: #fff; }
+
+/* Base & Safe Area Colors */
+.bg-red { background-color: #ff4d4d !important; }
+.bg-green { background-color: #4CAF50 !important; }
+.bg-yellow { background-color: #FFC107 !important; }
+.bg-blue { background-color: #2196F3 !important; }
+.bg-safe { background-color: #ccc !important; position: relative; }
+.bg-safe::after { content: '★'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #555; }
+
+/* Tokens */
+#tokens-container { position: absolute; top: 5px; left: 5px; width: calc(100% - 10px); height: calc(100% - 10px); pointer-events: none; }
+.token { position: absolute; width: 6.66%; height: 6.66%; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: all 0.3s ease; pointer-events: auto; z-index: 10; cursor: pointer; }
+.token.red { background: radial-gradient(circle, #ff9999, #d00000); }
+.token.green { background: radial-gradient(circle, #99ff99, #008000); }
+.token.yellow { background: radial-gradient(circle, #ffff99, #d4af37); }
+.token.blue { background: radial-gradient(circle, #99ccff, #0000cc); }
+.token.active { box-shadow: 0 0 15px 5px #fff; animation: pulse 1s infinite; z-index: 20; }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* Modal */
+.modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; z-index: 100; }
+.modal-content { background: #16213e; padding: 40px; border-radius: 10px; text-align: center; }
