@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Multiplayer Ludo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Setup Screen (Create or Join) -->
+    <div id="setup-screen" class="screen">
+        <h1>🎲 Ludo Multiplayer</h1>
+        <div class="card">
+            <button id="create-btn" class="btn primary">Create New Room</button>
+            <div class="divider">OR</div>
+            <input type="text" id="room-code-input" placeholder="Enter 4-Digit Room Code" maxlength="4">
+            <button id="join-btn" class="btn secondary">Join Room</button>
+        </div>
+        <p id="error-msg" class="error"></p>
+    </div>
+
+    <!-- Lobby Screen (Waiting for players) -->
+    <div id="lobby-screen" class="screen" style="display: none;">
+        <h1>Room Code: <span id="display-room-code">----</span></h1>
+        <div class="card">
+            <h3>Players Joined:</h3>
+            <ul id="player-list"></ul>
+            <p>Waiting for others... (Min 2 required)</p>
+            <button id="start-btn" class="btn primary" style="display: none;">Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Screen (Board and Gameplay) -->
+    <div id="game-screen" class="screen" style="display: none;">
+        <div class="game-header">
+            <h2 id="turn-indicator">Turn: <span id="current-turn-text">Loading...</span></h2>
+            <div id="dice-container">
+                <div id="dice-value">🎲</div>
+                <button id="roll-btn" class="btn primary" disabled>Roll Dice</button>
+            </div>
+            <p>Your Color: <strong id="my-color-text"></strong></p>
+        </div>
+
+        <div class="board-container">
+            <div class="ludo-board" id="ludo-board">
+                <!-- Board grid cells generated via JS -->
+            </div>
+            <!-- Tokens generated via JS -->
+            <div id="tokens-container"></div>
+        </div>
+    </div>
+
+    <!-- Winner Modal -->
+    <div id="winner-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h1 id="winner-text">Player Wins! 🎉</h1>
+            <button onclick="location.reload()" class="btn primary">Play Again</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (Modular v9) -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
